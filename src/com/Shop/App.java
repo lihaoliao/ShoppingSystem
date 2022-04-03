@@ -1,4 +1,4 @@
-package com.library;
+package com.Shop;
 
 public class App {
     public static void main(String[] args) {
