@@ -1,7 +1,10 @@
 package com.shop;
 
+import com.ui.WelcomeClass;
+
 public class App {
     public static void main(String[] args) {
-        System.out.println("Test");
+        WelcomeClass w = new WelcomeClass();
+        w.start();
     }
 }
