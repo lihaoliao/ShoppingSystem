@@ -18,4 +18,13 @@
         <price>399.0</price>
         <description>秋季男士风衣</description>
     </clothes>
+    <clothes id = "A0020">
+        <brand>ZARA</brand>
+        <style>连衣裙</style>
+        <color>白色</color>
+        <size>S</size>
+        <num>8</num>
+        <price>299.0</price>
+        <description>百搭连衣裙</description>
+    </clothes>
 </list>

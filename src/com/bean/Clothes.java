@@ -11,7 +11,7 @@ public class Clothes  implements Serializable {
     private String color;//颜色
     private String size;//尺码
     private int num;//库存
-    private float prize;
+    private float price;
     private String description;
 
     public String getId() {
@@ -63,11 +63,11 @@ public class Clothes  implements Serializable {
     }
 
     public float getPrize() {
-        return prize;
+        return price;
     }
 
     public void setPrize(float prize) {
-        this.prize = prize;
+        this.price = prize;
     }
 
     public String getDescription() {
@@ -85,7 +85,7 @@ public class Clothes  implements Serializable {
         this.color = color;
         this.size = size;
         this.num = num;
-        this.prize = prize;
+        this.price = prize;
         this.description = description;
     }
 }

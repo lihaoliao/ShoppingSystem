@@ -33,11 +33,17 @@ public class WelcomeClass extends BaseClass{
                         println(getString("reg.error"));
                     }
                     break;
+                case "3":
+                    flag = false;
+                    System.exit(0);
+                    break;
                 default:
                     println(getString("input.error"));
                     break;
 
             }
         }
+        HomePageClass homePageClass = new HomePageClass();
+        homePageClass.show();
     }
 }
