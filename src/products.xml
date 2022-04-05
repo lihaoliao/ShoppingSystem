@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <list>
     <clothes id = "A0010">
         <brand>NIKE</brand>
@@ -14,7 +14,7 @@
         <style>风衣</style>
         <color>黑色</color>
         <size>XL</size>
-        <num>3</num>
+        <num>4</num>
         <price>399.0</price>
         <description>秋季男士风衣</description>
     </clothes>
@@ -23,7 +23,7 @@
         <style>连衣裙</style>
         <color>白色</color>
         <size>S</size>
-        <num>8</num>
+        <num>11</num>
         <price>299.0</price>
         <description>百搭连衣裙</description>
     </clothes>

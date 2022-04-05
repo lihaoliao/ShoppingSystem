@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class OrderItem implements Serializable {
     private static final long serialVersionUID = -7226149841273295332L;
+    public static int countId = 1;
     private int orderId;
     private Clothes clothes;
     private int shoppingNum;
@@ -15,7 +16,9 @@ public class OrderItem implements Serializable {
         this.shoppingNum = shoppingNum;
         this.sum = sum;
     }
+    public OrderItem(){
 
+    }
     public int getOrderId() {
         return orderId;
     }

@@ -1,14 +1,22 @@
 package com.ui;
 
 import com.bean.Clothes;
+import com.bean.Order;
+import com.bean.OrderItem;
 import com.service.ClothesService;
 import com.service.Implement.ClothesServiceImplement;
-import com.shop.App;
+import com.service.Implement.OrderServiceImplement;
+import com.service.OrderService;
+import com.utils.ClothesIO;
 import com.utils.ConsoleTable;
+import com.utils.DateUtils;
+import com.utils.OrderIO;
 
 import java.util.List;
 
 public class HomePageClass extends BaseClass{
+    private OrderService orderService = new OrderServiceImplement();
+    private ClothesService clothesService = new ClothesServiceImplement();
     public void show(){
         println("Welcome "+currentUser.getUsername()+"!");
         showProducts();
@@ -43,13 +51,65 @@ public class HomePageClass extends BaseClass{
     }
 
     private void searchOrderById() {
+
     }
 
     private void purchase() {
+        //生成订单
+        Order order = new Order();
+        boolean flag = true;
+        float total = 0.0f;
+        while (flag){
+            println(getString("input.productId"));
+            String id = input.nextLine();
+            Clothes result = clothesService.findById(id);
+            if(result==null){
+                println(getString("input.error"));
+                continue;
+            }
+            println(getString("input.productNum"));
+            int num = Integer.parseInt(input.nextLine());
+            if(result.getNum()<num){
+                println(getString("clothes.num"));
+                continue;
+            }
+            //一条订单
+            result.setNum(result.getNum()-num);
+            OrderItem orderItem = new OrderItem();
+            orderItem.setShoppingNum(num);
+            orderItem.setClothes(result);
+            orderItem.setSum(result.getPrize()*num);
+            total += result.getPrize()*num;
+            orderItem.setOrderId(OrderItem.countId++);
+            order.getOrderItemList().add(orderItem);
+
+            println(getString("continue"));
+            println(getString("info.select"));
+            String s = input.nextLine();
+            switch (s){
+                case "1":
+                    flag = true;
+                    break;
+                case "2":
+                    flag = false;
+                    break;
+                default:
+                    flag = false;
+                    break;
+            }
+        }
+        order.setCreateDate(DateUtils.current());
+        order.setUserId(currentUser.getId());
+        order.setSum(total);
+        order.setOrderId(orderService.list().size()+1);
+        orderService.purchase(order);
+        clothesService.update();
+        show();
     }
 
 
     private void viewAllOrder() {
+
     }
 
     private void showProducts(){

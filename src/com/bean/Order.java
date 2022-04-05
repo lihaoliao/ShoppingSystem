@@ -15,11 +15,8 @@ public class Order implements Serializable {
     private OrderStatusType statusType = OrderStatusType.UNPAID;
     private int UserId;
 
-    public Order(int orderId, String createDate, float sum,  int userId) {
-        this.orderId = orderId;
-        this.createDate = createDate;
-        this.sum = sum;
-        UserId = userId;
+    public Order(){
+
     }
 
     public int getOrderId() {
