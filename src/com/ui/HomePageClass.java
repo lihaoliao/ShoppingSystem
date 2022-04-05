@@ -15,8 +15,10 @@ import com.utils.OrderIO;
 import java.util.List;
 
 public class HomePageClass extends BaseClass{
+    //此处应当减少HomePageClass和OrderServiceImplement类的耦合
     private OrderService orderService = new OrderServiceImplement();
     private ClothesService clothesService = new ClothesServiceImplement();
+
     public void show() {
         println("Welcome " + currentUser.getUsername() + "!");
         showProducts();
