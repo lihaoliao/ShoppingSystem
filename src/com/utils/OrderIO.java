@@ -18,6 +18,7 @@ public class OrderIO {
     }
 
     public  List<Order> list(){
+        readOrders();
         return orders;
     }
 

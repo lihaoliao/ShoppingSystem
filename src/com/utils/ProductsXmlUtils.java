@@ -20,7 +20,7 @@ public class ProductsXmlUtils {
         BufferedInputStream inputStream = null;
         try{
             inputStream = new BufferedInputStream(new FileInputStream(getPathUtils.getPath("products.xml")));
-            System.out.println(getPathUtils.getPath("products.xml"));
+            //System.out.println(getPathUtils.getPath("products.xml"));
             products = (List<Clothes>) xStream.fromXML(inputStream);
         }catch (IOException e){
             e.printStackTrace();
@@ -45,7 +45,7 @@ public class ProductsXmlUtils {
         BufferedOutputStream outputStream = null;
         try{
             outputStream = new BufferedOutputStream(new FileOutputStream(getPathUtils.getPath("products.xml")));
-            System.out.println(getPathUtils.getPath("products.xml"));
+            //System.out.println(getPathUtils.getPath("products.xml"));
             outputStream.write("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>".getBytes());
             xStream.toXML(products,outputStream);
         } catch (FileNotFoundException e) {

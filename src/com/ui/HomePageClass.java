@@ -17,9 +17,13 @@ import java.util.List;
 public class HomePageClass extends BaseClass{
     private OrderService orderService = new OrderServiceImplement();
     private ClothesService clothesService = new ClothesServiceImplement();
-    public void show(){
-        println("Welcome "+currentUser.getUsername()+"!");
+    public void show() {
+        println("Welcome " + currentUser.getUsername() + "!");
         showProducts();
+        menu();
+    }
+
+    public void menu(){
         boolean flag = true;
         while (flag){
             println(getString("home.function"));
@@ -31,12 +35,17 @@ public class HomePageClass extends BaseClass{
                     flag = false;
                     break;
                 case "2"://查找订单
-                    searchOrderById();
+                    println(getString("order.search")+":");
+                    String id = input.nextLine();
+                    searchOrderById(Integer.parseInt(id));
                     flag = false;
                     break;
                 case "3"://购买
                     purchase();
                     flag = false;
+                    break;
+                case "4":
+                    show();
                     break;
                 case "0"://切换用户
                     flag = false;
@@ -50,8 +59,15 @@ public class HomePageClass extends BaseClass{
         }
     }
 
-    private void searchOrderById() {
-
+    private void searchOrderById(int id) {
+        List<Order> list = orderService.list();
+        Order result = orderService.searchById(id);
+        if(result==null){
+            println(getString("order.nonexistent"));
+        }else {
+            showOrder(result);
+        }
+        menu();
     }
 
     private void purchase() {
@@ -109,8 +125,44 @@ public class HomePageClass extends BaseClass{
 
 
     private void viewAllOrder() {
-
+        List<Order> list = orderService.list();
+        for(Order o:list){
+            showOrder(o);
+        }
+        menu();
     }
+
+    private void showOrder(Order order){
+        println(getString("order.id")+":"+order.getOrderId());
+        println(getString("order.time")+":"+order.getCreateDate());
+        println(getString("order.sum")+":"+order.getSum());
+        ConsoleTable t = new ConsoleTable(9, true);
+        t.appendRow();
+        t.appendColum("id")
+                .appendColum("brand")
+                .appendColum("style")
+                .appendColum("color")
+                .appendColum("size")
+                .appendColum("num")
+                .appendColum("price")
+                .appendColum("description")
+                .appendColum("sum");
+
+        for(OrderItem o:order.getOrderItemList()){
+            t.appendRow();
+            t.appendColum(o.getOrderId())
+                    .appendColum(o.getClothes().getBrand())
+                    .appendColum(o.getClothes().getStyle())
+                    .appendColum(o.getClothes().getColor())
+                    .appendColum(o.getClothes().getSize())
+                    .appendColum(o.getShoppingNum())
+                    .appendColum(o.getClothes().getPrize())
+                    .appendColum(o.getClothes().getDescription())
+                    .appendColum(o.getSum());
+        }
+        System.out.println(t.toString());
+    }
+
 
     private void showProducts(){
         ClothesService clothesService = new ClothesServiceImplement();
