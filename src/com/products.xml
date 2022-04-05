@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<list>
+    <clothes id = "A0010">
+        <brand>NIKE</brand>
+        <style>运动裤</style>
+        <color>黑色</color>
+        <size>S</size>
+        <num>5</num>
+        <price>199.0</price>
+        <description>秋季运动长裤</description>
+    </clothes>
+    <clothes id = "A0011">
+        <brand>HM</brand>
+        <style>风衣</style>
+        <color>黑色</color>
+        <size>XL</size>
+        <num>3</num>
+        <price>399.0</price>
+        <description>秋季男士风衣</description>
+    </clothes>
+</list>
