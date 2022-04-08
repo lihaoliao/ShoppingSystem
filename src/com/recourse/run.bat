@@ -1,0 +1,2 @@
+cd C:\Users\86135\.jdks\corretto-1.8.0_322\bin
+native2ascii -encoding UTF-8 C:\Users\86135\IdeaProjects\ShoppingSystem\src\com\recourse\r_temp.properties C:\Users\86135\IdeaProjects\ShoppingSystem\src\com\recourse\recourse.properties
